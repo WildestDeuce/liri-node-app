@@ -70,7 +70,7 @@ function movie() {
 function verbatim() {
 
   // We will read the existing bank file
-  fs.readFile("bank.txt", "utf8", function (err, data) {
+  fs.readFile("random.txt", "utf8", function (err, data) {
     if (err) {
       return console.log(err);
     }
