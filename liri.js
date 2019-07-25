@@ -23,7 +23,7 @@ switch (command) {
     break;
 
   case "do-what-it-says":
-    //verbatim();
+    verbatim();
     break;
 }
 
