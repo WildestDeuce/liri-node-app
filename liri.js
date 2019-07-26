@@ -7,7 +7,7 @@ var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
 var command = process.argv[2];
-var input = process.argv[3];
+var input = process.argv.slice(3).join(" ");
 
 switch (command) {
   case "concert-this":
@@ -33,7 +33,12 @@ function concert() {
     .then(function (response) {
       // If the axios was successful...
       // Then log the body from the site!
+      console.log(response.data[0].datetime);
       console.log(response.data[0].venue.name);
+      console.log(response.data[0].venue.region);
+      console.log(response.data[0].venue.city);
+
+
     })
     .catch(function (error) {
       if (error.response) {
@@ -47,21 +52,36 @@ function song() {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
+    if(!input){
+      input==="The Sign"
+    }
 
-    console.log(data);
+    console.log(data.tracks.items[0].album.artists[0].name);
+    console.log(data.tracks.items[0].name)
+    console.log(data.tracks.items[0].preview_url);
+    console.log(data.tracks.items[0].album.name);
+
   });
 }
 
 function movie() {
   axios
-    .get("http://www.omdbapi.com/?apikey=trilogy&s=" + input)
+    .get("http://www.omdbapi.com/?apikey=trilogy&t=" + input)
     .then(function (response) {
       // If the axios was successful...
       // Then log the body from the site!
-      console.log(response.data[0].title.year);
+      console.log(response.data.Title);
+      console.log(response.data.Year);
+      console.log(response.data.Ratings[0]);
+      console.log(response.data.Ratings[1]);
+      console.log(response.data.Country);
+      console.log(response.data.Language);
+      console.log(response.data.Plot);
+      console.log(response.data.Actors);
+  
     })
     .catch(function (error) {
-      if (error.response) {
+      if (error.response.Search[0]) {
       }
     });
 }
@@ -77,16 +97,17 @@ function verbatim() {
 
     // Break down all the numbers inside
     data = data.split(", ");
-    var result = 0;
+    input = data[1];
+    // var result = 0;
 
     // Loop through those numbers and add them together to get a sum.
-    for (var i = 0; i < data.length; i++) {
-      if (parseFloat(data[i])) {
-        result += parseFloat(data[i]);
-      }
-    }
+    // for (var i = 0; i < data.length; i++) {
+    //   if (parseFloat(data[i])) {
+    //     result += parseFloat(data[i]);
+    //   }
+    // }
 
     // We will then print the final balance rounded to two decimal places.
-    console.log("You have a total of " + result.toFixed(2));
+    song();
   });
 }
