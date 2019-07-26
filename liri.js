@@ -52,8 +52,8 @@ function song() {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-    if(!input){
-      input==="The Sign"
+    if (!input) {
+      input === "The Sign"
     }
 
     console.log(data.tracks.items[0].album.artists[0].name);
@@ -78,7 +78,7 @@ function movie() {
       console.log(response.data.Language);
       console.log(response.data.Plot);
       console.log(response.data.Actors);
-  
+
     })
     .catch(function (error) {
       if (error.response.Search[0]) {
@@ -95,19 +95,9 @@ function verbatim() {
       return console.log(err);
     }
 
-    // Break down all the numbers inside
     data = data.split(", ");
     input = data[1];
-    // var result = 0;
 
-    // Loop through those numbers and add them together to get a sum.
-    // for (var i = 0; i < data.length; i++) {
-    //   if (parseFloat(data[i])) {
-    //     result += parseFloat(data[i]);
-    //   }
-    // }
-
-    // We will then print the final balance rounded to two decimal places.
     song();
   });
 }
