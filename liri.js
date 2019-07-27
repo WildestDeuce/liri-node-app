@@ -15,11 +15,11 @@ switch (command) {
     break;
 
   case "spotify-this-song":
-    song();
+    song(input);
     break;
 
   case "movie-this":
-    movie();
+    movie(input);
     break;
 
   case "do-what-it-says":
@@ -33,7 +33,7 @@ function concert() {
     .then(function (response) {
       // If the axios was successful...
       // Then log the body from the site!
-      console.log(response.data[0].datetime);
+      console.log(moment(response.data[0].datetime).format("L"));
       console.log(response.data[0].venue.name);
       console.log(response.data[0].venue.region);
       console.log(response.data[0].venue.city);
@@ -46,25 +46,49 @@ function concert() {
     });
 }
 
-function song() {
-
-  spotify.search({ type: 'track', query: input }, function (err, data) {
-    if (err) {
-      return console.log('Error occurred: ' + err);
-    }
-    if (!input) {
-      input === "The Sign"
-    }
-
+function song(input) {
+  if (input ==="") {
+      type = "track"
+      input = "Ace of Base"
+   }
+  spotify.search({ type: "track", query: input }, function (err, data) {
     console.log(data.tracks.items[0].album.artists[0].name);
     console.log(data.tracks.items[0].name)
     console.log(data.tracks.items[0].preview_url);
     console.log(data.tracks.items[0].album.name);
+    if (err) {
+      return console.log("Error occurred:"  + err);
+    }
+  })
+ }
 
-  });
-}
+// function song() {
+//   var ace = function () {
+//     if (input = '') {
+//       type = 'track'
+//       input = 'Ace of Base'
+//     }
+//   }
+
+//   spotify.search({ type: 'track', query: input }, function (err, data) {
+//     if (err) {
+//       return console.log('Error occurred: ' + err);
+//     }
+
+//     console.log(data.tracks.items[0].album.artists[0].name);
+//     console.log(data.tracks.items[0].name)
+//     console.log(data.tracks.items[0].preview_url);
+//     console.log(data.tracks.items[0].album.name);
+
+//     ace();
+
+//   });
+// }
 
 function movie() {
+    if (input ==="") {
+        input = "Mr. Nobody"
+     }
   axios
     .get("http://www.omdbapi.com/?apikey=trilogy&t=" + input)
     .then(function (response) {
