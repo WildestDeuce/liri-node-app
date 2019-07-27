@@ -62,28 +62,6 @@ function song(input) {
   })
  }
 
-// function song() {
-//   var ace = function () {
-//     if (input = '') {
-//       type = 'track'
-//       input = 'Ace of Base'
-//     }
-//   }
-
-//   spotify.search({ type: 'track', query: input }, function (err, data) {
-//     if (err) {
-//       return console.log('Error occurred: ' + err);
-//     }
-
-//     console.log(data.tracks.items[0].album.artists[0].name);
-//     console.log(data.tracks.items[0].name)
-//     console.log(data.tracks.items[0].preview_url);
-//     console.log(data.tracks.items[0].album.name);
-
-//     ace();
-
-//   });
-// }
 
 function movie() {
     if (input ==="") {
