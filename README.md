@@ -14,7 +14,7 @@
 ### There is no input value:
 ### This is the command:
 `spotify-this-song`
-![](images/spotify-this-no-input.PNG)hi
+![](images/spotify-this-song-no-input.PNG)
 ### This is the command:
 `spotify-this-song`
 ![](images/spotify-this-song.PNG)
